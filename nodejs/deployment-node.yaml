@@ -1,0 +1,24 @@
+apiVersion : apps/v1
+kind: Deployment 
+metadata:
+  name: nodejs
+  labels:
+    app: myapp
+spec:
+  template:
+    metadata:
+      name: node-port
+      labels:
+        app: myapp
+        type: rest-api
+    spec:
+      containers:
+      - name : backend-api
+        image: safoueneraddaoui/node-app:v1
+        ports:
+        -  containerPort: 3000
+  replicas: 1
+  selector:
+    matchLabels:
+      app: myapp  
+      type: rest-api
