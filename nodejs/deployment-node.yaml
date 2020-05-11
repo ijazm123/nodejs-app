@@ -3,22 +3,21 @@ kind: Deployment
 metadata:
   name: nodejs
   labels:
-    app: myapp
+    app: nodejs
 spec:
   template:
     metadata:
-      name: node-port
+      name: nodejs
       labels:
-        app: myapp
-        type: rest-api
+        app: nodejs
     spec:
       containers:
-      - name : backend-api
-        image: safoueneraddaoui/node-app:v1
+      - name : nodejs
+        image: safoueneraddaoui/nodejs-app:v4
         ports:
         -  containerPort: 3000
   replicas: 1
   selector:
     matchLabels:
-      app: myapp  
-      type: rest-api
+      app: nodejs  
+
