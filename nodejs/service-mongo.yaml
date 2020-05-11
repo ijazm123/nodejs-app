@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nodejs
   labels:
-    name: nodejs
+    app: mongo
+  name: mongo
 spec:
+  type: ClusterIP
   ports:
-  - port: 3000
-    targetPort: 3000
+    - targetPort: 27017
+      port: 27017
   selector:
-    app: nodejs
-  type: NodePort
+    app: mongo
