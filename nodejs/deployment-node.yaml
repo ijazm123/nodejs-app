@@ -1,14 +1,23 @@
-apiVersion: v1
-kind: Pod
+apiVersion : apps/v1
+kind: Deployment 
 metadata:
   labels:
-    app: mongo
-  name: mongo
+    app: nodejs
+  name: nodejs
 spec:
-  containers:
-  - image: mongo:latest
-    name: mongo
-    ports:
-    - containerPort: 27017
-      protocol: TCP
+  template:
+    metadata:
+      name: nodejs
+      labels:
+        app: nodejs
+    spec:
+      containers:
+      - name : nodejs
+        image: safoueneraddaoui/nodejs-app:v4
+        ports:
+        -  containerPort: 3000
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodejs  
 
