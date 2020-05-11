@@ -8,7 +8,7 @@ metadata:
 spec:
   containers:
   - image: mongo:latest
-    name: container1
+    name: mongo
     command:
     - mongod
     - "--bind_ip"
